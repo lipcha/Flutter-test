@@ -25,9 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                  onPressed: () => Navigator.of(context).pushNamed(
-                      Routes.homeWork1,
-                      arguments: HomeWork1Screen.screenA),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(Routes.screenA),
                   child: const Text(AppStrings.buttonHW1))
             ],
           ),
