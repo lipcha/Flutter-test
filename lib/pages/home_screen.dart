@@ -27,7 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                   onPressed: () =>
                       Navigator.of(context).pushNamed(Routes.screenA),
-                  child: const Text(AppStrings.buttonHW1))
+                  child: const Text(AppStrings.buttonHW1)),
+              ElevatedButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(Routes.inheritedWidget),
+                  child: const Text(AppStrings.buttonHW2))
             ],
           ),
         ));
