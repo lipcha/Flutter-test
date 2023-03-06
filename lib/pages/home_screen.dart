@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:test_app/pages/routes.dart';
 
 import '../resources/app_strings.dart';
-import 'hw1/home_work_1_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,7 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                   onPressed: () =>
                       Navigator.of(context).pushNamed(Routes.inheritedWidget),
-                  child: const Text(AppStrings.buttonHW2))
+                  child: const Text(AppStrings.buttonHW2)),
+              ElevatedButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(Routes.block),
+                  child: const Text(AppStrings.buttonHW3))
             ],
           ),
         ));
