@@ -5,30 +5,29 @@ import 'package:test_app/pages/hw3/counter_state.dart';
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc()
       : super(CounterState(count: 0, history: List.empty(growable: true))) {
-    on<CounterEvent>(mapEventToState);
+    on<IncrementCounterEvent>(onIncrementCounter);
+    on<DecrementCounterEvent>(onDecrementCounter);
+    on<ResetCounterEvent>(onResetCounter);
+    on<ResetHistoryEvent>(onResetHistory);
   }
 
-  void mapEventToState(
-      CounterEvent event, Emitter<CounterState> emitter) async {
-    if (event is IncrementCounterEvent) {
-      emitter(CounterState(
-          count: state.count + 1, history: getUpdatedHistory("Increment")));
-    }
+  void onIncrementCounter(CounterEvent event, Emitter<CounterState> emitter) {
+    emitter(CounterState(
+        count: state.count + 1, history: getUpdatedHistory("Increment")));
+  }
 
-    if (event is DecrementCounterEvent) {
-      emitter(CounterState(
-          count: state.count - 1, history: getUpdatedHistory("Decrement")));
-    }
+  void onDecrementCounter(CounterEvent event, Emitter<CounterState> emitter) {
+    emitter(CounterState(
+        count: state.count - 1, history: getUpdatedHistory("Decrement")));
+  }
 
-    if (event is ResetCounterEvent) {
-      emitter(
-          CounterState(count: 0, history: getUpdatedHistory("Reset count")));
-    }
+  void onResetCounter(CounterEvent event, Emitter<CounterState> emitter) {
+    emitter(CounterState(count: 0, history: getUpdatedHistory("Reset count")));
+  }
 
-    if (event is ResetHistoryEvent) {
-      emitter(CounterState(
-          count: state.count, history: List.empty(growable: true)));
-    }
+  void onResetHistory(CounterEvent event, Emitter<CounterState> emitter) {
+    emitter(
+        CounterState(count: state.count, history: List.empty(growable: true)));
   }
 
   List<String> getUpdatedHistory(String newEvent) {
