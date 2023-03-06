@@ -5,32 +5,32 @@ import 'package:test_app/pages/hw3/counter_state.dart';
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc()
       : super(CounterState(count: 0, history: List.empty(growable: true))) {
-    on<IncrementCounterEvent>(onIncrementCounter);
-    on<DecrementCounterEvent>(onDecrementCounter);
-    on<ResetCounterEvent>(onResetCounter);
-    on<ResetHistoryEvent>(onResetHistory);
+    on<IncrementCounterEvent>(_onIncrementCounter);
+    on<DecrementCounterEvent>(_onDecrementCounter);
+    on<ResetCounterEvent>(_onResetCounter);
+    on<ResetHistoryEvent>(_onResetHistory);
   }
 
-  void onIncrementCounter(CounterEvent event, Emitter<CounterState> emitter) {
+  void _onIncrementCounter(CounterEvent event, Emitter<CounterState> emitter) {
     emitter(CounterState(
-        count: state.count + 1, history: getUpdatedHistory("Increment")));
+        count: state.count + 1, history: _getUpdatedHistory("Increment")));
   }
 
-  void onDecrementCounter(CounterEvent event, Emitter<CounterState> emitter) {
+  void _onDecrementCounter(CounterEvent event, Emitter<CounterState> emitter) {
     emitter(CounterState(
-        count: state.count - 1, history: getUpdatedHistory("Decrement")));
+        count: state.count - 1, history: _getUpdatedHistory("Decrement")));
   }
 
-  void onResetCounter(CounterEvent event, Emitter<CounterState> emitter) {
-    emitter(CounterState(count: 0, history: getUpdatedHistory("Reset count")));
+  void _onResetCounter(CounterEvent event, Emitter<CounterState> emitter) {
+    emitter(CounterState(count: 0, history: _getUpdatedHistory("Reset count")));
   }
 
-  void onResetHistory(CounterEvent event, Emitter<CounterState> emitter) {
+  void _onResetHistory(CounterEvent event, Emitter<CounterState> emitter) {
     emitter(
         CounterState(count: state.count, history: List.empty(growable: true)));
   }
 
-  List<String> getUpdatedHistory(String newEvent) {
+  List<String> _getUpdatedHistory(String newEvent) {
     final List<String> history = List.from(state.history);
     history.add(newEvent);
     return history;
