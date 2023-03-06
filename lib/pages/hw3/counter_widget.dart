@@ -8,6 +8,12 @@ class CounterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // good solution
+    return BlocSelector<CounterBloc, CounterState, int>(
+        selector: (state) => state.count,
+        builder: ((counterBlock, count) => Text("Count = $count")));
+
+    // not so good solution
     return BlocBuilder<CounterBloc, CounterState>(
         buildWhen: (oldState, newState) => oldState.count != newState.count,
         builder: ((counterBlock, state) => Text("Count = ${state.count}")));

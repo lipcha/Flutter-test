@@ -9,14 +9,10 @@ class HistoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        BlocBuilder<CounterBloc, CounterState>(
-            buildWhen: (oldState, newState) =>
-                oldState.history.length != newState.history.length,
-            builder: ((counterBlock, state) =>
-                Text("History: ${state.history.join(", ")}")))
-      ],
-    );
+    return BlocBuilder<CounterBloc, CounterState>(
+        buildWhen: (oldState, newState) =>
+            oldState.history.length != newState.history.length,
+        builder: ((counterBlock, state) =>
+            Flexible(child: Text("History: ${state.history.join(", ")}"))));
   }
 }

@@ -55,13 +55,7 @@ class CounterScreenContent extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Column(
-                    children: const [HistoryWidget()],
-                  ),
-                )
-              ],
+              children: const [HistoryWidget()],
             )
           ])
         ],
